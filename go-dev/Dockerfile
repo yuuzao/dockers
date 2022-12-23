@@ -78,8 +78,6 @@ RUN \
   RUN go install -v github.com/mitchellh/gox@latest
   RUN go install -v github.com/onsi/ginkgo/ginkgo@v1.16.5
   RUN curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s -- -b ${GOPATH}/bin ${GOLANGCI_LINT_VERSION}
-  RUN curl -sSL https://github.com/koalaman/shellcheck/releases/download/${SHELLCHECK_VERSION}/shellcheck-${SHELLCHECK_VERSION}.linux.x86_64.tar.xz
-  RUN tar -vxJ -C /usr/local/bin --strip=1
   RUN curl -sSL https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERSION}_linux_amd64.zip -o /tmp/packer.zip
   RUN unzip /tmp/packer.zip -d /usr/local/bin
   RUN curl -o /usr/local/bin/shfmt -sSL https://github.com/mvdan/sh/releases/download/v{SHFMT_VERSION}/shfmt_v{SHFMT_VERSION}_linux_amd64
@@ -88,8 +86,6 @@ RUN \
   RUN chmod +rx /usr/local/bin/goss
   RUN curl -L "https://github.com/aelsabbahy/goss/releases/download/${GOSS_VERSION}/dgoss" -o /usr/local/bin/dgoss
   RUN chmod +rx /usr/local/bin/dgoss
-  RUN curl -sSL -o /tmp/upx.tar.xz https://github.com/upx/upx/releases/download/v${UPX_VERSION}/upx-${UPX_VERSION}-amd64_linux.tar.xz
-  RUN tar -xvf /tmp/upx.tar.xz -C /tmp
   RUN mv /tmp/upx-${UPX_VERSION}-amd64_linux/upx /usr/local/bin/upx
   RUN pip3 install --disable-pip-version-check --no-cache-dir --upgrade pip
   RUN pip3 install --disable-pip-version-check --no-cache-dir --upgrade ansible==${ANSIBLE_VERSION} ansible-core==2.12.6 --force-reinstall
