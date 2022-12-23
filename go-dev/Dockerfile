@@ -86,7 +86,7 @@ RUN \
   RUN chmod +rx /usr/local/bin/goss
   RUN curl -L "https://github.com/aelsabbahy/goss/releases/download/${GOSS_VERSION}/dgoss" -o /usr/local/bin/dgoss
   RUN chmod +rx /usr/local/bin/dgoss
-  RUN mv /tmp/upx-${UPX_VERSION}-amd64_linux/upx /usr/local/bin/upx
+
   RUN pip3 install --disable-pip-version-check --no-cache-dir --upgrade pip
   RUN pip3 install --disable-pip-version-check --no-cache-dir --upgrade ansible==${ANSIBLE_VERSION} ansible-core==2.12.6 --force-reinstall
   RUN ansible-galaxy collection install ansible.windows:==1.10.0
