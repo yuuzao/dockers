@@ -63,7 +63,7 @@ RUN \
   wamerican \
   wget \
   zip \
-  && curl -L https://golang.google.cn/dl/go${GO_VERSION}.linux-amd64.tar.gz | tar -C /usr/local -xz \
+  && curl -L https://golang.org/dl/go${GO_VERSION}.linux-amd64.tar.gz | tar -C /usr/local -xz \
   && mkdir -p /go/bin \
   && export GOPROXY=https://goproxy.cn \
   && go install -v github.com/AlekSi/gocov-xml@latest \
@@ -89,8 +89,8 @@ RUN \
   && curl -sSL -o /tmp/upx.tar.xz https://github.com/upx/upx/releases/download/v${UPX_VERSION}/upx-${UPX_VERSION}-amd64_linux.tar.xz \
   && tar -xvf /tmp/upx.tar.xz -C /tmp \
   && mv /tmp/upx-${UPX_VERSION}-amd64_linux/upx /usr/local/bin/upx \
-  && pip3 install -i https://mirror.nju.edu.cn/pypi/web/simple --disable-pip-version-check --no-cache-dir --upgrade pip \
-  && pip3 install -i https://mirror.nju.edu.cn/pypi/web/simple --disable-pip-version-check --no-cache-dir --upgrade ansible==${ANSIBLE_VERSION} ansible-core==2.12.6 --force-reinstall \
+  && pip3 install --disable-pip-version-check --no-cache-dir --upgrade pip \
+  && pip3 install --disable-pip-version-check --no-cache-dir --upgrade ansible==${ANSIBLE_VERSION} ansible-core==2.12.6 --force-reinstall \
   && ansible-galaxy collection install ansible.windows:==1.10.0 \
   && apt-get purge --auto-remove -y libffi-dev python3-dev \
   && apt-get autoremove -y \
