@@ -1,4 +1,3 @@
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          1,1           All
 FROM debian:latest
 
 LABEL name="yuuzao's dev environment"
