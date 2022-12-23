@@ -68,15 +68,15 @@ RUN \
 
   RUN curl -L https://golang.org/dl/go${GO_VERSION}.linux-amd64.tar.gz | tar -C /usr/local -xz
   RUN mkdir -p /go/bin
-  RUN go install -v github.com/AlekSi/gocov-xml@latest
-  RUN go install -v github.com/axw/gocov/gocov@latest
-  RUN go install -v github.com/dgrijalva/jwt-go/cmd/jwt@latest
-  RUN go install -v github.com/go-bindata/go-bindata/go-bindata@v3.1.2
-  RUN go install -v github.com/go-delve/delve/cmd/dlv@v1.9.0
-  RUN go install -v github.com/golang/protobuf/protoc-gen-go@latest
-  RUN go install -v github.com/haya14busa/goverage@latest
-  RUN go install -v github.com/mitchellh/gox@latest
-  RUN go install -v github.com/onsi/ginkgo/ginkgo@v1.16.5
+  RUN go get -v github.com/AlekSi/gocov-xml@latest  
+  RUN go get -v github.com/axw/gocov/gocov@latest  
+  RUN go get -v github.com/dgrijalva/jwt-go/cmd/jwt@latest  
+  RUN go get -v github.com/go-bindata/go-bindata/go-bindata@v3.1.2  
+  RUN go get -v github.com/go-delve/delve/cmd/dlv@v1.9.0  
+  RUN go get -v github.com/golang/protobuf/protoc-gen-go@latest  
+  RUN go get -v github.com/haya14busa/goverage@latest  
+  RUN go get -v github.com/mitchellh/gox@latest  
+  RUN go get -v github.com/onsi/ginkgo/ginkgo@v1.16.5 
   RUN curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s -- -b ${GOPATH}/bin ${GOLANGCI_LINT_VERSION}
   RUN curl -sSL https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERSION}_linux_amd64.zip -o /tmp/packer.zip
   RUN unzip /tmp/packer.zip -d /usr/local/bin
