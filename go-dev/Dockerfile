@@ -67,6 +67,7 @@ RUN \
   zip
 
   RUN curl -L https://golang.org/dl/go${GO_VERSION}.linux-amd64.tar.gz | tar -C /usr/local -xz \
+  && export PATH=$PATH:/usr/local/go/bin
   && mkdir -p /go/bin \
   && go get -v github.com/AlekSi/gocov-xml@latest \
   && go get -v github.com/axw/gocov/gocov@latest \
