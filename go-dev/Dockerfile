@@ -66,17 +66,17 @@ RUN \
   wget \
   zip
 
-  RUN curl -L https://golang.org/dl/go${GO_VERSION}.linux-amd64.tar.gz | tar -C /usr/local -xz
-  RUN mkdir -p /go/bin
-  RUN go get -v github.com/AlekSi/gocov-xml@latest  
-  RUN go get -v github.com/axw/gocov/gocov@latest  
-  RUN go get -v github.com/dgrijalva/jwt-go/cmd/jwt@latest  
-  RUN go get -v github.com/go-bindata/go-bindata/go-bindata@v3.1.2  
-  RUN go get -v github.com/go-delve/delve/cmd/dlv@v1.9.0  
-  RUN go get -v github.com/golang/protobuf/protoc-gen-go@latest  
-  RUN go get -v github.com/haya14busa/goverage@latest  
-  RUN go get -v github.com/mitchellh/gox@latest  
-  RUN go get -v github.com/onsi/ginkgo/ginkgo@v1.16.5 
+  RUN curl -L https://golang.org/dl/go${GO_VERSION}.linux-amd64.tar.gz | tar -C /usr/local -xz \
+  && mkdir -p /go/bin \
+  && go get -v github.com/AlekSi/gocov-xml@latest \
+  && go get -v github.com/axw/gocov/gocov@latest \
+  && go get -v github.com/dgrijalva/jwt-go/cmd/jwt@latest \
+  && go get -v github.com/go-bindata/go-bindata/go-bindata@v3.1.2  \
+  && go get -v github.com/go-delve/delve/cmd/dlv@v1.9.0  \
+  && go get -v github.com/golang/protobuf/protoc-gen-go@latest \
+  && go get -v github.com/haya14busa/goverage@latest \  
+  && go get -v github.com/mitchellh/gox@latest \
+  && go get -v github.com/onsi/ginkgo/ginkgo@v1.16.5 \
   RUN curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s -- -b ${GOPATH}/bin ${GOLANGCI_LINT_VERSION}
   RUN curl -sSL https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERSION}_linux_amd64.zip -o /tmp/packer.zip
   RUN unzip /tmp/packer.zip -d /usr/local/bin
@@ -87,8 +87,8 @@ RUN \
   RUN curl -L "https://github.com/aelsabbahy/goss/releases/download/${GOSS_VERSION}/dgoss" -o /usr/local/bin/dgoss
   RUN chmod +rx /usr/local/bin/dgoss
 
-  RUN pip3 install --disable-pip-version-check --no-cache-dir --upgrade pip
-  RUN pip3 install --disable-pip-version-check --no-cache-dir --upgrade ansible==${ANSIBLE_VERSION} ansible-core==2.12.6 --force-reinstall
+  RUN pip install --disable-pip-version-check --no-cache-dir --upgrade pip
+  RUN pip install --disable-pip-version-check --no-cache-dir --upgrade ansible==${ANSIBLE_VERSION} ansible-core==2.12.6 --force-reinstall
   RUN ansible-galaxy collection install ansible.windows:==1.10.0
   RUN apt-get purge --auto-remove -y libffi-dev python3-dev
   RUN apt-get autoremove -y
