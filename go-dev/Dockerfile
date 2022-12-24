@@ -86,4 +86,3 @@ RUN \
   RUN apt-get autoremove -y
   RUN apt-get clean -y
   RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/man /usr/share/doc ${GOPATH}/pkg/* ${GOPATH}/src/* /root/cache /root/.cache
-  RUN go clean -cache -testcache -modcache
